@@ -1,10 +1,25 @@
 if (Meteor.is_client) {
 
+  Template.events.eventlist = function () {
+    return Events.find({}, {sort: {name: 1}});
+  };
+
+  Template.user.user = function () {
+    return User.find({}, {sort: {name: 1}});
+  };
+
+  // events
+  Template.events.events = {
+    'click .events': function (event) {
+      console.log("foo");
+      // update user object: facebook id and event id
+      // go to user 'home' with current playing, list and form
+    }
+  };
   Template.hello.events = {
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
+    'click .fblogin': function (event) {
+      event.preventDefault();
+      FB.login(function(response) { }, {scope:'user_events'});
     }
   };
 }

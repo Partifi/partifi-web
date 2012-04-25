@@ -8,10 +8,34 @@
 
 <template name="hello">
   <div class="hello">
-    <h1>Screen 1</h1>
-    <ol>
-      <li>Logo</li>
-      <li>Facebook login</li>
+    <div class="topbar">
+      {{> user}}
+    </div>
+    <h1>Parti.fi</h1>
+    {{> events}}
+    <div id="fb-root"></div>
   </div>
+</template>
+
+<template name="user">
+  <div id="user-info">
+  {{#each user}}
+    {{#if name}}
+       {{name}} <img src="https://graph.facebook.com/{{id}}/picture">
+    {{/if}}
+
+    {{#unless name}}
+      <a href="#" class="fblogin">Login</a>
+    {{/unless}}
+  {{/each}}
+  </div>
+</template>
+
+<template name="events">
+  <ul id="events">
+    {{#each eventlist}}
+      <li class="event" id="{{id}}">{{name}}</li>
+    {{/each}}
+  </ul>
 </template>
 
