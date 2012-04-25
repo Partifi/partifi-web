@@ -23,15 +23,11 @@
 
 <template name="user">
   <div id="user-info">
-  {{#each user}}
-    {{#if name}}
-       {{name}} <img src="https://graph.facebook.com/{{id}}/picture">
-    {{/if}}
-
-    {{#unless name}}
-      <a href="#" class="fblogin">Login</a>
-    {{/unless}}
-  {{/each}}
+  {{#if user}}
+     {{user.name}} <img src="https://graph.facebook.com/{{user.id}}/picture">
+  {{else}}
+    <a href="#" class="fblogin">Login</a>
+  {{/if}}
   </div>
 </template>
 

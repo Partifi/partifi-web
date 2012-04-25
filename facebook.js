@@ -1,6 +1,5 @@
 if (Meteor.is_client) {
   Events = new Meteor.Collection("events");
-  User =   new Meteor.Collection("user");
 
   //set up FB
   window.fbAsyncInit = function() {
@@ -22,7 +21,7 @@ if (Meteor.is_client) {
   function updateUserInfo(response) {
 
     FB.api('/me', function(response) {
-      User.insert({name: response.name, id: response.id});
+      Session.set('user', {name: response.name, id: response.id});
     });
 
     FB.api('/me/events', function(response) {
