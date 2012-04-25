@@ -1,7 +1,4 @@
 if (Meteor.is_client) {
-  Template.hello.greeting = function () {
-    return "Welcome to partify-mobile.";
-  };
 
   Template.hello.events = {
     'click input' : function () {
@@ -17,3 +14,4 @@ if (Meteor.is_server) {
     // code to run on server at startup
   });
 }
+
