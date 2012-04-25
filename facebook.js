@@ -1,5 +1,4 @@
 Events = new Meteor.Collection("events");
-User =   new Meteor.Collection("user");
 
 if (Meteor.is_client) {
   //set up FB
@@ -24,7 +23,7 @@ if (Meteor.is_client) {
   function updateUserInfo(response) {
     console.log("wut");
     FB.api('/me', function(response) {
-      User.insert({name: response.name, id: response.id});
+      Session.set('user', {name: response.name, id: response.id});
     });
 
     FB.api('/me/events', function(response) {
