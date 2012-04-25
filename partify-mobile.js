@@ -5,7 +5,7 @@ if (Meteor.is_client) {
   };
 
   Template.user.user = function () {
-    return Session.get('user');
+    return user = Session.get('user');
   };
 
   // events

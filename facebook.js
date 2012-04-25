@@ -27,6 +27,7 @@ if (Meteor.is_client) {
     });
 
     FB.api('/me/events', function(response) {
+      Events.remove({});
       for (i in response.data) {
         Events.insert({name: response.data[i].name, id: response.data[i].id});
       }
