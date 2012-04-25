@@ -1,7 +1,7 @@
-if (Meteor.is_client) {
-  Events = new Meteor.Collection("events");
-  User =   new Meteor.Collection("user");
+Events = new Meteor.Collection("events");
+User =   new Meteor.Collection("user");
 
+if (Meteor.is_client) {
   //set up FB
   window.fbAsyncInit = function() {
     FB.init({
@@ -10,17 +10,19 @@ if (Meteor.is_client) {
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
     });
+    console.log("wut");
     FB.Event.subscribe('auth.statusChange', handleStatusChange);
   };
 
   function handleStatusChange(response) {
+    console.log("wut");
     if (response.authResponse) {
       updateUserInfo(response);
     }
   }
 
   function updateUserInfo(response) {
-
+    console.log("wut");
     FB.api('/me', function(response) {
       User.insert({name: response.name, id: response.id});
     });
