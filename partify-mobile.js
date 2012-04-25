@@ -22,6 +22,23 @@ if (Meteor.is_client) {
       FB.login(function(response) { }, {scope:'user_events'});
     }
   };
+
+  Template.playlist.songs = function() {
+    return Songs.find({});
+  };
+
+  Template.songSubmission.events = {
+    'submit form': function (event) {
+      event.preventDefault();
+      var songTrack = document.getElementById("song-track").value;
+      // Songs.insert({name: songTrack});
+      Meteor.call('searchSong', songTrack, function(error, result) {
+        console.log(result)
+        if(!result)
+          alert("oops that song is way to indie for us, please try again...")
+      });
+    }
+  };
 }
 
 if (Meteor.is_server) {

@@ -4,13 +4,17 @@
 
 <body>
   {{> hello}}
+
+  {{> songSubmission}}
+
+  {{> playlist}}
 </body>
 
 <template name="hello">
   <div class="hello">
     <div class="topbar">
       {{> user}}
-    </div>
+  </div>
     <h1>Parti.fi</h1>
     {{> events}}
     <div id="fb-root"></div>
@@ -37,5 +41,25 @@
       <li class="event" id="{{id}}">{{name}}</li>
     {{/each}}
   </ul>
+</template>
+
+<template name="songSubmission">
+  <div> <!-- needed due to some stupid bug -->
+  <form id='song-submission'>
+    <input id='song-track' placeholder='eg. lady gaga born this way' />
+    <input type='submit' value='ADD!' />
+  </form>
+  </div>
+</template>
+
+<template name="playlist">
+  <div>
+    <h1>Playlist</h1>
+    <ul>
+      {{#each songs}}
+      <li>{{name}} {{artist}} {{href}}</li>
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
